@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
+    <title><%= "Fish" %></title>
 
     <!-- Bootstrap core CSS -->
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,8 +41,6 @@
             </div>
           </div>
 
-
-
           <div class="inner cover">
             <h1 class="cover-heading">All Fish in DB</h1>
             </p>
@@ -54,7 +53,6 @@
               <tr>
                 <th> Fish Name </th>
                 <th> Average Weight </th>
-                <th> RegNum </th>
                 <th> Picture Location </th>
               </tr>
             </thead>
@@ -63,16 +61,12 @@
               <% print.forEach(function(Fish_local){ %>
                 <tr>
                   <td><%=Fish_local.fishName %></td>
-                  <td><%=Fish_local.ave_wgt %></td>
-                  <td><%=Fish_local.regNum %></td>
+                  <td><%=Fish_local.ave_wght %></td>
                   <td><%=Fish_local.picture %></td>
               <% }) %>
             </tbody>
 
           </table>
-
-
-
 
           <div class="mastfoot">
             <div class="inner">
