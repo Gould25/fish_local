@@ -1,4 +1,6 @@
 var express = require('express');
+var engine = require('ejs-locals');
+var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
 //var favicon = require('static-favicon');
 var logger = require('morgan');
@@ -10,6 +12,7 @@ var fish = require('./routes/fish');
 var users = require('./routes/users');
 
 var app = express();
+app.engine('ejs', engine);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expressLayouts);
 
 app.use('/', routes);
 app.use('/fish', fish);
