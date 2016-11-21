@@ -61,3 +61,45 @@ CREATE TABLE if NOT EXISTS bait(
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
   ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+/*Creating table Artificial */
+CREATE TABLE if NOT EXISTS artificial(
+  baitName VARCHAR(25) NOT NULL,
+  size VARCHAR(15),
+  color VARCHAR(15),
+  PRIMARY KEY (baitName)
+);
+
+/*Creating table Organic */
+CREATE TABLE if NOT EXISTS organic(
+  baitName VARCHAR(25) NOT NULL,
+  PRIMARY KEY (baitName)
+);
+
+/*Creating table boat */
+CREATE TABLE if NOT EXISTS boat(
+  lat Float(10,6) NOT NULL,
+  lng Float(10,6) NOT NULL,
+  PRIMARY KEY (lat,lng)
+);
+
+/*Creating table bank*/
+CREATE TABLE if NOT EXISTS bank(
+  lat Float(10,6) NOT NULL,
+  lng Float(10,6) NOT NULL,
+  PRIMARY KEY (lat,lng)
+);
+
+/*Creating table fishlog */
+CREATE TABLE IF NOT EXISTS fishlog(
+  logNum INTEGER NOT NULL AUTO_INCREMENT,
+  fishName VARCHAR(25) NOT NULL,
+  b_o_w VARCHAR(25) NOT NULL,
+  wght INTEGER(4),
+  length INTEGER(4),
+  line_wght INTEGER(3),
+  notes TEXT,
+  PRIMARY KEY (logNum),
+  CONSTRAINT FOREIGN KEY (fishName) REFERENCES fish (fishName)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
