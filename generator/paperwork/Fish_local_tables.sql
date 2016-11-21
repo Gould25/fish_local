@@ -20,7 +20,7 @@ CREATE TABLE if NOT EXISTS location(
   state VARCHAR(25) NOT NULL,
   county VARCHAR(25) NOT NULL,
   fishName VARCHAR(25) NOT NULL,
-  PRIMARY KEY (lat,lng,fishName),
+  PRIMARY KEY (lat,lng,fishName,b_o_w),
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
   ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -32,10 +32,8 @@ CREATE TABLE IF NOT EXISTS record(
   wght INTEGER(4) NOT NULL,
   length INTEGER(4),
   line_wght INTEGER(3) NOT NULL,
-  FOREIGN KEY (fishName) REFERENCES fish (fishName)
+  CONSTRAINT FOREIGN KEY (fishName) REFERENCES fish (fishName)
   ON UPDATE CASCADE ON DELETE CASCADE
-  /*FOREIGN KEY (b_o_w) REFERENCES location (b_o_w)
-  ON UPDATE CASCADE ON DELETE CASCADE*/
 );
 
 /*Creating table family */
@@ -49,7 +47,17 @@ CREATE TABLE IF NOT EXISTS family(
 /*Creating table alias */
 CREATE TABLE IF NOT EXISTS alias(
   fishName VARCHAR(25) NOT NULL,
-  aliasName VARCHAR(25) NOT NULL,
+  aliasName VARCHAR(25) NOT NULL UNIQUE,
+  FOREIGN KEY (fishName) REFERENCES fish (fishName)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Creating table bait */
+CREATE TABLE if NOT EXISTS bait(
+  fishName VARCHAR(25) NOT NULL,
+  baitName VARCHAR(25) NOT NULL,
+  description TEXT NOT NULL,
+  PRIMARY KEY (baitName),
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
   ON UPDATE CASCADE ON DELETE CASCADE
 );

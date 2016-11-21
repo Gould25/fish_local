@@ -21,5 +21,10 @@ VALUES ("Channel Catfish", "Catfish")
 ;
 
 INSERT INTO alias(fishName, aliasName)
-VALUES ("Channel Catfish", "Mr Whiskers")
+VALUES ("Channel Catfish", "Mr Whiskers"),
+        ("Channel Catfish", "BarbHead")
+;
+
+INSERT INTO bait(fishName, baitName, description)
+VALUES ("Channel Catfish", "Nightcrawlers","typical large earthworm")
 ;
