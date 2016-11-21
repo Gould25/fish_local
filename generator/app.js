@@ -26,6 +26,8 @@ app.use('/', routes);
 app.use('/fish', fish);
 app.use('/users', users);
 
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
+
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

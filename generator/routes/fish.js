@@ -8,7 +8,7 @@ var sql = require('./../controllers/sql.js');
 var con = mysql.createConnection({
   host : 'localhost',
   user : 'root',
-  password : '1205',
+  password : 'gibson82',
   database : 'Fish_local'
 });
 
