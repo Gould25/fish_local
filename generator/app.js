@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var fish = require('./routes/fish');
 var users = require('./routes/users');
+var records = require('./routes/records');
 
 var app = express();
 app.engine('ejs', engine);
@@ -29,6 +30,7 @@ app.use(expressLayouts);
 app.use('/', routes);
 app.use('/fish', fish);
 app.use('/users', users);
+app.use('/records', records);
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));

@@ -1,0 +1,32 @@
+
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Missouri State Record Fish</h1>
+            </p>
+          </div>
+
+          <table id="table" class="table" >
+
+            <thead>
+
+              <tr>
+                <th> Fish Name </th>
+                <th> Body of Water </th>
+                <th> Weight </th>
+                <th> Length </th>
+                <th> Line Weight </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% print.forEach(function(Fish_local){ %>
+                <tr>
+                  <td><%=Fish_local.fishName %></td>
+                  <td><%=Fish_local.b_o_w %></td>
+                  <td><%=Fish_local.wght %></td>
+                  <td><%=Fish_local.length %></td>
+                  <td><%=Fish_local.line_wght %></td>
+              <% }) %>
+            </tbody>
+
+          </table>
