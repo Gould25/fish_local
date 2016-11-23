@@ -11,6 +11,7 @@ var routes = require('./routes/index');
 var fish = require('./routes/fish');
 var users = require('./routes/users');
 var records = require('./routes/records');
+var fishlog = require('./routes/fishlog');
 
 var app = express();
 app.engine('ejs', engine);
@@ -31,6 +32,7 @@ app.use('/', routes);
 app.use('/fish', fish);
 app.use('/users', users);
 app.use('/records', records);
+app.use('/fishlog', fishlog);
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
