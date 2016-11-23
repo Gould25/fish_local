@@ -1,0 +1,30 @@
+<div class="inner cover">
+  <h1 class="cover-heading">All Locations</h1>
+  </p>
+</div>
+
+<table id="table" class="table" >
+
+  <thead>
+
+    <tr>
+      <th> Latitude </th>
+      <th> Longitude </th>
+      <th> Body of Water </th>
+      <th> State </th>
+      <th> County </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% print.forEach(function(Fish_local){ %>
+      <tr>
+        <td><%=Fish_local.lat %></td>
+        <td><%=Fish_local.lng %></td>
+        <td><%=Fish_local.b_o_w %></td>
+        <td><%=Fish_local.state %></td>
+        <td><%=Fish_local.county %></td>
+    <% }) %>
+  </tbody>
+
+</table>

@@ -12,6 +12,7 @@ var fish = require('./routes/fish');
 var users = require('./routes/users');
 var records = require('./routes/records');
 var fishlog = require('./routes/fishlog');
+var locations = require('./routes/locations');
 
 var app = express();
 app.engine('ejs', engine);
@@ -33,6 +34,7 @@ app.use('/fish', fish);
 app.use('/users', users);
 app.use('/records', records);
 app.use('/fishlog', fishlog);
+app.use('/locations', locations);
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
