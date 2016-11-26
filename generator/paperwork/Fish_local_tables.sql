@@ -28,8 +28,6 @@ CREATE TABLE IF NOT EXISTS record(
   fishName VARCHAR(25) NOT NULL,
   b_o_w VARCHAR(25) NOT NULL,
   wght INTEGER(4) NOT NULL,
-  length INTEGER(4),
-  line_wght INTEGER(3) NOT NULL,
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
 );
 

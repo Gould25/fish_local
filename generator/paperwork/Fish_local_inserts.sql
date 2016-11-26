@@ -29,8 +29,8 @@ INSERT INTO location(lat,lng,b_o_w,state,county)
           "Hickory")
 ;
 
-INSERT INTO record(fishName, b_o_w, wght, length, line_wght)
-VALUES ("Channel Catfish", "Pomme de Terre", 57, NULL, 30)
+INSERT INTO record(fishName, b_o_w, wght)
+VALUES ("Channel Catfish", "Pomme de Terre", 57)
 ;
 
 INSERT INTO family(fishName, familyName)
