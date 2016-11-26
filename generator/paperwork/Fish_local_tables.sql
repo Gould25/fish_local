@@ -27,7 +27,8 @@ CREATE TABLE if NOT EXISTS location(
 CREATE TABLE IF NOT EXISTS record(
   fishName VARCHAR(25) NOT NULL,
   b_o_w VARCHAR(25) NOT NULL,
-  wght INTEGER(4) NOT NULL,
+  wght VARCHAR(20) NOT NULL,
+  date_caught DATE NOT NULL,
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
 );
 

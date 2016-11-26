@@ -19,7 +19,8 @@ VALUES ("Channel Catfish", "2-12 lbs","/images/Channel-Catfish.jpg"),
        ("Brown Trout", "10", "/images/brown-trout.jpg"),
        ("Rainbow Trout", "1.5", "/images/rainbow-trout.jpg"),
        ("Walleye", "8", "/images/walleye.jpg"),
-       ("Bigmouth Buffalo", "65", "/images/bigmouth-buffalo.jpg"),
+       ("Bigmouth Buffalo", "35", "/images/bigmouth-buffalo.jpg"),
+       ("Smallmouth Buffalo", "35", "/images/smallmouth-buffalo.jpg"),
        ("Common Carp", "8", "/images/common-carp.jpg"),
        ("Grass Carp", "25", "/images/grass-carp.jpg"),
        ("Bluegill", "0.75", "/images/bluegill.jpg")
@@ -29,8 +30,31 @@ INSERT INTO location(lat,lng,b_o_w,state,county)
           "Hickory")
 ;
 
-INSERT INTO record(fishName, b_o_w, wght)
-VALUES ("Channel Catfish", "Pomme de Terre", 57)
+INSERT INTO record(fishName, b_o_w, wght,date_caught)
+VALUES ("Channel Catfish", "Lake Jacomo", "34 lbs. 10 oz.",'1976-10-12'),
+        ("Bullhead Catfish", "Binder Lake", "4 lbs. 11 oz.",'1977-06-05'),
+        ("Blue Catfish", "Missouri River", "130 lbs. 0 oz.",'2010-07-20'),
+        ("Flathead Catfish", "Montrose Lake", "77 lbs. 8 oz.",'2003-04-28'),
+        ("Largemouth Bass", "Bull Shoals Lake", "13 lbs. 14 oz.",'1961-04-21'),
+        ("White Bass", "Table Rock Lake", "5 lbs. 6 oz.",'2002-03-19'),
+        ("Striped Bass", "Bull Shoals Lake", "65 lbs. 2 oz.",'2015-05-21'),
+        ("Smallmouth Bass", "Stockton Lake", "7 lbs. 2 oz.",'1994-12-18'),
+        ("Kentucky Bass", "Table Rock Lake", "7 lbs. 8 oz.",'1966-04-06'),
+        ("Hybrid Striped Bass", "Lake of the Ozarks", "20 lbs. 8 oz.",'1986-11-22'),
+        ("Black Crappie", "Private Pond", "5 lbs. 0 oz.",'2006-04-21'),
+        ("White Crappie", "Farm Pond", "4 lbs. 9 oz.",'2000-03-05'),
+        ("Goggle-Eye", "Big Piney River", "2 lbs. 12 oz.",'1968-06-15'),
+        ("Muskellunge", "Lake of the Ozarks", "41 lbs. 2 oz.",'1981-03-09'),
+        ("Spoonbill", "Table Rock Lake", "140 lbs. 9 oz.",'2015-03-21'),
+        ("Northern Pike", "Stockton Lake", "18 lbs. 9 oz.",'1975-04-26'),
+        ("Brown Trout", "Lake Taneycomo", "28 lbs. 12 oz.",'2009-11-20'),
+        ("Rainbow Trout", "Roaring River", "18 lbs. 1 oz.",'2009-08-14'),
+        ("Walleye", "Bull Shoals Lake", "21 lbs. 1 oz.",'1988-03-26'),
+        ("Bigmouth Buffalo", "Loch-Loma Lake", "56 lbs. 0 oz.",'1976-08-19'),
+        ("Smallmouth Buffalo", "Lake of the Ozarks", "36 lbs. 12 oz.",'1986-06-10'),
+        ("Common Carp", "Rothwell Park Lake", "50 lbs. 6 oz.",'1996-06-02'),
+        ("Grass Carp", "Crowder State Park", "69 lbs. 0 oz.",'2002-11-13'),
+        ("Bluegill", "Farm Pond", "3 lbs. 0 oz.",'1963-06-08')
 ;
 
 INSERT INTO family(fishName, familyName)
@@ -44,7 +68,7 @@ VALUES ("Channel Catfish", "Catfish"),
         ("Smallmouth Bass", "Bass"),
         ("Hybrid Striped Bass", "Bass"),
         ("Kentucky Bass", "Bass"),
-        ("White Crappie", "Panfish"),
+        ("Black Crappie", "Panfish"),
         ("White Crappie", "Panfish"),
         ("Goggle-Eye", "Panfish"),
         ("Muskellunge", "Pikes"),
@@ -54,6 +78,7 @@ VALUES ("Channel Catfish", "Catfish"),
         ("Rainbow Trout", "Trout"),
         ("Walleye", "Perch"),
         ("Bigmouth Buffalo", "Sucker"),
+        ("Smallmouth Buffalo", "Sucker"),
         ("Common Carp", "Minnow"),
         ("Grass Carp", "Minnow"),
         ("Bluegill", "Panfish")
