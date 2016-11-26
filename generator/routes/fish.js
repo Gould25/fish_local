@@ -19,16 +19,23 @@ router.get('/', function(req, res){
   });
 });
 
-router.get('/search/:term', function(req, res, next) {
-  var term = '%' + req.params.term + '%';
-  db.query('SELECT * FROM fish WHERE fishName LIKE ?', [term], 
-    function(err, rows) {
-      if (err)
-        throw err;
-      console.log("Rows: " + rows);
-      res.json(rows);
-      res.end();
-  });
+router.get('/search', function(req, res, next) {
+  var term = req.query.term;
+  var callback = function(err, rows) {
+    if (err)
+      throw err;
+    console.log("Rows: " + rows);
+    var fish = { print: rows, layout: false };
+    res.render("fish-search", fish);
+    res.end();
+  }
+  if (term === undefined)
+    db.query('SELECT * FROM fish', callback);
+  else
+  {
+    var term = '%' + term + '%';
+    db.query('SELECT * FROM fish WHERE fishName LIKE ?', [term], callback);
+  }
 });
 
 module.exports = router;

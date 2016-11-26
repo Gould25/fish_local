@@ -127,6 +127,10 @@ body {
   color: rgba(255,255,255,.5);
 }
 
+#page-content p input[type="text"] {
+  color: #000;
+}
+
 
 /*
  * Affix and center

@@ -40,6 +40,7 @@ app.use('/baits', baits);
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/knockout', express.static(__dirname + '/node_modules/knockout/build/output/'));
 
 
 /// catch 404 and forwarding to error handler
