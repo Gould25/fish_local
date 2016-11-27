@@ -1,9 +1,114 @@
+/*****     Fish Locale initial Data Base     *****/
+
+/* Creating Database */
+
+CREATE DATABASE if NOT EXISTS Fish_local;
+
+USE Fish_local;
+
+/* ***** Creating tables ***** */
+
+/* Creating table fish */
+CREATE TABLE if NOT EXISTS fish(
+  fishName Varchar(25) NOT NULL,
+  ave_wght Varchar(15) NOT NULL,
+  picture Varchar(55),
+  PRIMARY KEY (fishName)
+);
+
+/*Creating table Location */
+CREATE TABLE if NOT EXISTS location(
+  loc_id INTEGER(3) NOT NULL AUTO_INCREMENT,
+  lat Float(10,6) NOT NULL,
+  lng Float(10,6) NOT NULL,
+  b_o_w VARCHAR(25) NOT NULL,
+  state VARCHAR(25) NOT NULL,
+  county VARCHAR(25) NOT NULL,
+  PRIMARY KEY (loc_id)
+);
+
+/*Creating table record */
+CREATE TABLE IF NOT EXISTS record(
+  fishName VARCHAR(25) NOT NULL,
+  b_o_w VARCHAR(25) NOT NULL,
+  wght VARCHAR(20) NOT NULL,
+  date_caught DATE NOT NULL,
+  FOREIGN KEY (fishName) REFERENCES fish (fishName)
+);
+
+/*Creating table family */
+CREATE TABLE IF NOT EXISTS family(
+  fishName VARCHAR(25) NOT NULL,
+  familyName VARCHAR(25) NOT NULL,
+  FOREIGN KEY (fishName) REFERENCES fish (fishName)
+);
+
+/*Creating table alias */
+CREATE TABLE IF NOT EXISTS alias(
+  fishName VARCHAR(25) NOT NULL,
+  aliasName VARCHAR(25) NOT NULL UNIQUE,
+  FOREIGN KEY (fishName) REFERENCES fish (fishName)
+);
+
+/*Creating table bait */
+CREATE TABLE if NOT EXISTS bait(
+  fishName VARCHAR(25) NOT NULL,
+  baitName VARCHAR(25) NOT NULL,
+  description TEXT NOT NULL,
+  PRIMARY KEY (baitName,fishName),
+  FOREIGN KEY (fishName) REFERENCES fish (fishName)
+);
+
+/*Creating table Artificial */
+CREATE TABLE if NOT EXISTS artificial(
+  baitName VARCHAR(25) NOT NULL,
+  size VARCHAR(15),
+  color VARCHAR(15),
+  PRIMARY KEY (baitName,size,color)
+);
+
+/*Creating table Organic */
+CREATE TABLE if NOT EXISTS organic(
+  baitName VARCHAR(25) NOT NULL,
+  PRIMARY KEY (baitName)
+);
+
+/*Creating table boat */
+CREATE TABLE if NOT EXISTS boat(
+  loc_id INTEGER(3) NOT NULL,
+  PRIMARY KEY (loc_id)
+);
+
+/*Creating table bank*/
+CREATE TABLE if NOT EXISTS bank(
+  loc_id INTEGER(3) NOT NULL,
+  PRIMARY KEY (loc_id)
+);
+
+/*Creating table fishlog */
+CREATE TABLE IF NOT EXISTS fishlog(
+  logNum INTEGER NOT NULL AUTO_INCREMENT,
+  fishName VARCHAR(25) NOT NULL,
+  loc_id INTEGER(3),
+  wght FLOAT(6),
+  length FLOAT(5),
+  baitName VARCHAR(25),
+  notes TEXT,
+  PRIMARY KEY (logNum),
+  FOREIGN KEY (fishName) REFERENCES fish (fishName),
+  FOREIGN KEY (baitName) REFERENCES bait (baitName)
+);
+
+/* adding foreign key loc_id  to fishlog */
+ALTER TABLE fishlog ADD FOREIGN KEY (loc_id) REFERENCES location (loc_id)
+;
+
 /* ***** INSERTING DATA ***** */
 INSERT INTO fish(fishName,ave_wght,picture)
 VALUES ("Channel Catfish", "2-12 lbs","/images/Channel-Catfish.jpg"),
        ("Blue Catfish", "35-135 lbs","/images/Blue-Catfish.jpg"),
        ("Flathead Catfish", "2-20 lbs","/images/Flathead-Catfish.jpg"),
-       ("Bullhead Catfish", "<2 lbs","/image/bullhead_catfish.jpg"),
+       ("Black Bullhead", "<2 lbs","/image/bullhead_catfish.jpg"),
        ("Largemouth Bass","0.5-4.5","/image/largemaouth-bass.jpg"),
        ("White Bass", "0.25-1.25","/images/white-bass.jpg"),
        ("Striped Bass", "5-20", "/images/striped-bass.jpg"),
@@ -26,13 +131,19 @@ VALUES ("Channel Catfish", "2-12 lbs","/images/Channel-Catfish.jpg"),
        ("Bluegill", "0.75", "/images/bluegill.jpg")
 ;
 INSERT INTO location(lat,lng,b_o_w,state,county)
- VALUES (37.837075,-93.262909,"Pomme de Terre","MO",
-          "Hickory")
+ VALUES (37.837075,-93.262909,"Pomme de Terre","MO","Hickory"),
+        (38.201491,-92.623494,"Osage River","MO","Miller"),
+        (38.116625,-92.663908,"Lake of the Ozarks","MO","Miller"),
+        (37.689125,-92.632192,"Clayton Pond","MO","Laclede"),
+        (37.535240,-92.371943,"Gasconade River","MO","Laclede"),
+        (37.731700,-92.858162,"Bennet Spring","MO","Dallas"),
+        (37.797050,-93.374136,"Pomme de Terre","MO","Hickory"),
+        (37.798650,-93.371869,"Pomme de Terre","MO","Hickory")
 ;
 
 INSERT INTO record(fishName, b_o_w, wght,date_caught)
 VALUES ("Channel Catfish", "Lake Jacomo", "34 lbs. 10 oz.",'1976-10-12'),
-        ("Bullhead Catfish", "Binder Lake", "4 lbs. 11 oz.",'1977-06-05'),
+        ("Black Bullhead", "Binder Lake", "4 lbs. 11 oz.",'1977-06-05'),
         ("Blue Catfish", "Missouri River", "130 lbs. 0 oz.",'2010-07-20'),
         ("Flathead Catfish", "Montrose Lake", "77 lbs. 8 oz.",'2003-04-28'),
         ("Largemouth Bass", "Bull Shoals Lake", "13 lbs. 14 oz.",'1961-04-21'),
@@ -61,7 +172,7 @@ INSERT INTO family(fishName, familyName)
 VALUES ("Channel Catfish", "Catfish"),
         ("Blue Catfish", "Catfish"),
         ("Flathead Catfish", "Catfish"),
-        ("Bullhead Catfish", "Catfish"),
+        ("Black Bullhead", "Catfish"),
         ("Largemouth Bass", "Bass"),
         ("White Bass", "Bass"),
         ("Striped Bass", "Bass"),
@@ -82,13 +193,22 @@ VALUES ("Channel Catfish", "Catfish"),
         ("Common Carp", "Minnow"),
         ("Grass Carp", "Minnow"),
         ("Bluegill", "Panfish")
-
-
 ;
 
 INSERT INTO alias(fishName, aliasName)
-VALUES ("Channel Catfish", "Mr Whiskers"),
-        ("Channel Catfish", "BarbHead")
+VALUES ("Channel Catfish", "Spotted cat"),
+        ("Channel Catfish", "Fiddler"),
+        ("Channel Catfish", "Lady Cat"),
+        ("Channel Catfish", "Chucklehead Cat"),
+        ("Channel Catfish", "Willow Cat"),
+        ("Blue Catfish", "Old Blue"),
+        ("Flathead Catfish", "Steel Head Cat"),
+        ("Largemouth Bass", "Bigmouth Bass"),
+        ("Muskellunge", "Musky"),
+        ("Goggle-Eye", "Rock Bass"),
+        ("Northern Pike", "Duckbill"),
+        ("Kentucky Bass", "Spotted Bass"),
+        ("White Crappie", "Papermouth")
 ;
 
 INSERT INTO bait(fishName, baitName, description)
@@ -108,7 +228,9 @@ VALUES ("Channel Catfish", "Nightcrawlers","typical large earthworm"),
         ("Flathead Catfish", "Stink bait","blood, cheese, ground liver"),
         ("Flathead Catfish", "Cut Shad","Whole"),
         ("Largemouth Bass", "Rappala","2 hook minnow"),
-        ("Largemouth Bass", "Rubber Worm","slip weight rig")
+        ("Largemouth Bass", "Rubber Worm","slip weight rig"),
+        ("Rainbow Trout", "Small Minnow","Small Minnow"),
+        ("White Crappie", "Small Minnow", "Small Minnow")
 
 ;
 
@@ -127,17 +249,24 @@ VALUES  ("Nightcrawlers"),
         ("Stink bait"),
         ("Cut Shad"),
         ("Hotdog"),
-        ("Chicken")
+        ("Chicken"),
+        ("Small Minnow")
 ;
 
 INSERT INTO boat(loc_id)
-VALUES  (1)
+VALUES  (1),(3),(5),(7),(8)
 ;
 
 INSERT INTO bank(loc_id)
-VALUES  (1)
+VALUES  (1),(2),(3),(4),(5),(6),(7)
 ;
 
 INSERT INTO fishlog(fishName,loc_id,wght,length,baitName,notes)
-VALUES  ("Channel Catfish", 1, 2, 22,"Nightcrawlers","sunset on bottom")
+VALUES  ("Channel Catfish", 1, 2, 22,"Nightcrawlers","sunset on bottom"),
+        ("Black Bullhead", 4, .75, 8,"Nightcrawlers","bottom"),
+        ("Largemouth Bass", 4, 4.75, 18,"Rubber Worm","Black"),
+        ("Goggle-Eye", 5, .75, 9,"Rubber Worm","Tree stump"),
+        ("Rainbow Trout", 6, 2.35, 17,"Small Minnow","swimming"),
+        ("White Crappie", 8, 1.1, 9,"Small Minnow","20' water"),
+        ("Blue Catfish", 8, 10.75, 26,"Cut Shad","bottom")
 ;
