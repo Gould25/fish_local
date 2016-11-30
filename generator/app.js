@@ -14,6 +14,8 @@ var records = require('./routes/records');
 var fishlog = require('./routes/fishlog');
 var locations = require('./routes/locations');
 var baits = require('./routes/baits');
+var addfish = require('./routes/addfish');
+
 
 var app = express();
 app.engine('ejs', engine);
@@ -27,6 +29,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 
@@ -37,6 +40,7 @@ app.use('/records', records);
 app.use('/fishlog', fishlog);
 app.use('/locations', locations);
 app.use('/baits', baits);
+app.use('/addfish', addfish);
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
