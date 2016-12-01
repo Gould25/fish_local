@@ -31,8 +31,11 @@ body {
 }
 body {
   color: #fff;
-  text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+h1 {
+  text-align: center;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -125,6 +128,7 @@ body {
 .mastfoot {
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
+  text-align: center;
 }
 
 #page-content p input[type="text"] {
