@@ -6,6 +6,8 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer');
+var upload = multer();
 
 var routes = require('./routes/index');
 var fish = require('./routes/fish');
@@ -32,6 +34,7 @@ app.use(cookieParser());
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
+app.use(upload.array());
 
 app.use('/', routes);
 app.use('/fish', fish);

@@ -3,12 +3,67 @@
   </p>
 </div>
 
-<form action="/" method="post">
-  Enter fish name: <input type="text" name="fishName" placeholder="..." />
-  <br><br>
-  Enter Fish's average weight: <input type="text" name="wght" placeholder="..."/>
-  <br><br>
-  Enter picture file name: <input type="text" name="picture" placeholder="..."/>
-  <br><br>
-  <button input type="submit" value= "Fish Added">Submit</button>
+<div id="form_input">
+  <form id="addfish_form" method="post" action="insertfish.js">
+    Enter fish name: <input type="text" name="fishName" placeholder="..." />
+    <br><br>
+    Enter Fish's average weight: <input type="text" name="wght" placeholder= "..."/>
+    <br><br>
+    Enter picture file name: <input type="text" name="picture" placeholder="..."/>
+    <br><br>
+    <input id="buttton" type="submit" onClick="addfish()" value="Add Fish"/>
   </form>
+</div>
+
+<div id="form_output">
+
+</div>
+
+<script type="text/javascript">
+
+ function addfish(){
+   var fishName = document.getElementById("fishName").value;
+   var wght = document.getElementById("wght").value;
+   var picture = document.getElementById("picture").value;
+
+   if(fishName == ""){
+     document.getElementById("NameError").innerHTML = "Please Enter a valid Name";
+   }
+
+   if(wght == ""){
+     document.getElementById("wghtError").innerHTML = "Please Enter a valid weight";
+   }
+
+   if(picture == ""){
+     document.getElementById("pictureError").innerHTML = "Please Enter a valid weight";
+   }
+}
+</script>
+
+<script type="text/javascript" >
+jquery(function() {
+  $(".submit").click(function() {
+    var fishName = $("#fishName").val();
+    var wght = $("#wght").val();
+    var picture = $("#picture").val();
+    var dataString = 'fishName='+ fishName + '&wght=' + wght + '&picture=' + picture;
+
+    if(fishName=='' || wght=='' || picture==''){
+      $('.success').fadeOut(200).hide();
+      $('.error').fadeOut(200).show();
+    }
+    else{
+      $.ajax({
+        type: "POST",
+        url: "insertfish.js",
+        data: dataString,
+        success: function(){
+          $('.success').fadeIn(200).show();
+          $('.error').fadeOut(200).hide();
+        }
+      });
+    }
+    return false;
+  });
+});
+</script>
