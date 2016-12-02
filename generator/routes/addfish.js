@@ -10,13 +10,12 @@ var db = require('./../controllers/insertfish.js');
 router.get('/', function(req, res, next){
   res.render('addfish');
 });
-/*
+
 router.post('/', function(req, res){
   res.render('addfish');
     console.log(req.body);
     res.send("recieved your request!");
 });
-
 router.post('/show_message', function(req, res){
   var fish = req.body;
   if (!fish.fishName || !fish.wght || !fish.picture){
@@ -30,5 +29,5 @@ router.post('/show_message', function(req, res){
       res.render('show_message', {message: "New fish added", type: "success", person: fish});
   };
 });
-*/
+
 module.exports = router;
