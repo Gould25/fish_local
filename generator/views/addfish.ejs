@@ -5,13 +5,21 @@
 
 <div id="form_input">
   <form id="addfish_form" method="post" action="">
-    Enter fish name: <input type="text" name="fishName" placeholder="..." />
-    <br><br>
-    Enter Fish's average weight: <input type="text" name="wght" placeholder= "..."/>
-    <br><br>
-    Enter picture file name: <input type="text" name="picture" placeholder="..."/>
-    <br><br>
-    <input id="buttton" type="submit" onClick="addfish()" value="Add Fish"/>
+    <div class="row">
+      <div class="col-md-6"><label for="fishName">Enter fish name:</label></div> 
+      <div class="col-md-6"><input class="form-control" type="text" name="fishName" id="fishName" placeholder="Fish Name" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="wght">Enter Fish&rsquo;s average weight:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="wght" id="wght" placeholder= "Weight"/></div>
+    </div> 
+    <div class="row">
+      <div class="col-md-6"><label for="picture">Enter picture file name: </label></div>
+      <div class="col-md-6"><input class="form-control" type="file" name="picture" id="picture" placeholder="" type/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><a id="add-fish-btn" class="btn btn-default" href="#">Add Fish</a></div>
+    </div>
   </form>
 </div>
 
@@ -41,8 +49,9 @@
 </script>
 
 <script type="text/javascript" >
-jquery(function() {
-  $(".submit").click(function() {
+jQuery(document).ready(function($) {
+  $("#add-fish-btn").click(function(e) {
+    e.preventDefault();
     var fishName = $("#fishName").val();
     var wght = $("#wght").val();
     var picture = $("#picture").val();
@@ -55,7 +64,7 @@ jquery(function() {
     else{
       $.ajax({
         type: "POST",
-        url: "insertfish.js",
+        url: "/addfish",
         data: dataString,
         success: function(){
           $('.success').fadeIn(200).show();
