@@ -37,6 +37,13 @@ body {
 h1 {
   text-align: center;
 }
+h3 {
+  text-align: center;
+}
+img.center {
+    display: block;
+    margin: 0 auto;
+}
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -79,6 +86,7 @@ h1 {
 .masthead-nav > li > a {
   padding-right: 0;
   padding-left: 0;
+  text-align: center;
   font-size: 16px;
   font-weight: bold;
   color: #fff; /* IE8 proofing */

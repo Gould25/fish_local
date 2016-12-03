@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS record(
   wght VARCHAR(20) NOT NULL,
   date_caught DATE NOT NULL,
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /*Creating table family */
@@ -41,6 +42,7 @@ CREATE TABLE IF NOT EXISTS family(
   fishName VARCHAR(25) NOT NULL,
   familyName VARCHAR(25) NOT NULL,
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /*Creating table alias */
@@ -48,15 +50,14 @@ CREATE TABLE IF NOT EXISTS alias(
   fishName VARCHAR(25) NOT NULL,
   aliasName VARCHAR(25) NOT NULL UNIQUE,
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /*Creating table bait */
 CREATE TABLE if NOT EXISTS bait(
-  fishName VARCHAR(25) NOT NULL,
   baitName VARCHAR(25) NOT NULL,
   description TEXT NOT NULL,
-  PRIMARY KEY (baitName,fishName),
-  FOREIGN KEY (fishName) REFERENCES fish (fishName)
+  PRIMARY KEY (baitName)
 );
 
 /*Creating table Artificial */
@@ -64,25 +65,30 @@ CREATE TABLE if NOT EXISTS artificial(
   baitName VARCHAR(25) NOT NULL,
   size VARCHAR(15),
   color VARCHAR(15),
-  PRIMARY KEY (baitName,size,color)
+  PRIMARY KEY (size,color),
+  FOREIGN KEY (baitName) REFERENCES bait (baitName)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /*Creating table Organic */
 CREATE TABLE if NOT EXISTS organic(
   baitName VARCHAR(25) NOT NULL,
-  PRIMARY KEY (baitName)
+  FOREIGN KEY (baitName) REFERENCES bait (baitName)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /*Creating table boat */
 CREATE TABLE if NOT EXISTS boat(
   loc_id INTEGER(3) NOT NULL,
-  PRIMARY KEY (loc_id)
+  FOREIGN KEY (loc_id) REFERENCES location (loc_id)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /*Creating table bank*/
 CREATE TABLE if NOT EXISTS bank(
   loc_id INTEGER(3) NOT NULL,
-  PRIMARY KEY (loc_id)
+  FOREIGN KEY (loc_id) REFERENCES location (loc_id)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /*Creating table fishlog */
@@ -95,12 +101,15 @@ CREATE TABLE IF NOT EXISTS fishlog(
   baitName VARCHAR(25),
   notes TEXT,
   PRIMARY KEY (logNum),
-  FOREIGN KEY (fishName) REFERENCES fish (fishName),
+  FOREIGN KEY (fishName) REFERENCES fish (fishName)
+    ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (baitName) REFERENCES bait (baitName)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /* adding foreign key loc_id  to fishlog */
 ALTER TABLE fishlog ADD FOREIGN KEY (loc_id) REFERENCES location (loc_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
 ;
 
 /* ***** INSERTING DATA ***** */
@@ -211,27 +220,14 @@ VALUES ("Channel Catfish", "Spotted cat"),
         ("White Crappie", "Papermouth")
 ;
 
-INSERT INTO bait(fishName, baitName, description)
-VALUES ("Channel Catfish", "Nightcrawlers","typical large earthworm"),
-        ("Channel Catfish", "Chicken Liver","raw"),
-        ("Channel Catfish", "Stink bait","blood, cheese, ground liver"),
-        ("Channel Catfish", "Cut Shad","Whole"),
-        ("Channel Catfish", "Hotdog","soaked in grape coolaid"),
-        ("Blue Catfish", "Nightcrawlers","typical large earthworm"),
-        ("Blue Catfish", "Chicken Liver","raw"),
-        ("Blue Catfish", "Stink bait","blood, cheese, ground liver"),
-        ("Blue Catfish", "Cut Shad","Whole"),
-        ("Blue Catfish", "Hotdog","soaked in grape coolaid"),
-        ("Blue Catfish", "Chicken","Whole fryer soaked in garlic and oil"),
-        ("Flathead Catfish", "Nightcrawlers","typical large earthworm"),
-        ("Flathead Catfish", "Chicken Liver","raw"),
-        ("Flathead Catfish", "Stink bait","blood, cheese, ground liver"),
-        ("Flathead Catfish", "Cut Shad","Whole"),
-        ("Largemouth Bass", "Rappala","2 hook minnow"),
-        ("Largemouth Bass", "Rubber Worm","slip weight rig"),
-        ("Rainbow Trout", "Small Minnow","Small Minnow"),
-        ("White Crappie", "Small Minnow", "Small Minnow")
-
+INSERT INTO bait(baitName, description)
+VALUES ("Nightcrawlers","typical large earthworm"),
+        ("Chicken Liver","raw"),
+        ("Stink bait","blood, cheese, ground liver"),
+        ("Cut Shad","Whole"),
+        ("Rappala","2 hook minnow"),
+        ("Rubber Worm","slip weight rig"),
+        ("Small Minnow","Small Minnow")
 ;
 
 INSERT INTO artificial(baitName,size,color)
@@ -248,8 +244,6 @@ VALUES  ("Nightcrawlers"),
         ("Chicken Liver"),
         ("Stink bait"),
         ("Cut Shad"),
-        ("Hotdog"),
-        ("Chicken"),
         ("Small Minnow")
 ;
 
