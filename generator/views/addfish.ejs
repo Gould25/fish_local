@@ -4,7 +4,7 @@
 </div>
 
 <div id="form_input">
-  <form id="addfish_form" method="post" action="">
+  <form id="addfish_form" method="post" action="" enctype="multipart/form-data">
     <div class="row">
       <div class="col-md-6"><label for="fishName">Enter fish name:</label></div> 
       <div class="col-md-6"><input class="form-control" type="text" name="fishName" id="fishName" placeholder="Fish Name" /></div>
@@ -52,27 +52,7 @@
 jQuery(document).ready(function($) {
   $("#add-fish-btn").click(function(e) {
     e.preventDefault();
-    var fishName = $("#fishName").val();
-    var wght = $("#wght").val();
-    var picture = $("#picture").val();
-    var dataString = 'fishName='+ fishName + '&wght=' + wght + '&picture=' + picture;
-
-    if(fishName=='' || wght=='' || picture==''){
-      $('.success').fadeOut(200).hide();
-      $('.error').fadeOut(200).show();
-    }
-    else{
-      $.ajax({
-        type: "POST",
-        url: "/addfish",
-        data: dataString,
-        success: function(){
-          $('.success').fadeIn(200).show();
-          $('.error').fadeOut(200).hide();
-        }
-      });
-    }
-    return false;
-  });
+    $('#addfish_form').submit();
+  })
 });
 </script>

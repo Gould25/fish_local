@@ -1,18 +1,17 @@
 var db = require('./../controllers/db.js');
-var uploader = require('./../controllers/uploader.js');
 
-var fish = function() { }
+var Fish = function() { }
 
 // Insert fish
-fish.insert = function(body) {
+Fish.prototype.insert = function(req) {
   console.log("Got here!!!")
   // Upload picture to filesystem
-  var path = uploader.upload_fish(body.picture);
+  var path = req.file.path.replace('public', '');
 
   // Add entry to database
-  db.query('insert into fish (fishName, ave_wght, picture) VALUES (?, ?, ?)', [body.fishName, body.wght, path]);
+  db.query('insert into fish (fishName, ave_wght, picture) VALUES (?, ?, ?)', [req.body.fishName, req.body.wght, path]);
 }
 
-module.exports = fish;
+module.exports = new Fish();
 
 
