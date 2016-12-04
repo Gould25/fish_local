@@ -11,6 +11,8 @@ var upload = multer();
 
 var routes = require('./routes/index');
 var fish = require('./routes/fish');
+var alias = require('./routes/alias');
+var family = require('./routes/family');
 var users = require('./routes/users');
 var records = require('./routes/records');
 var fishlog = require('./routes/fishlog');
@@ -44,6 +46,8 @@ app.use(upload.array());
 
 app.use('/', routes);
 app.use('/fish', fish);
+app.use('/alias', alias);
+app.use('/family', family);
 app.use('/users', users);
 app.use('/records', records);
 app.use('/fishlog', fishlog);

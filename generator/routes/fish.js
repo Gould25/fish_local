@@ -8,7 +8,7 @@ var db = require('./../controllers/db.js');
 router.get('/', function(req, res){
   // read table
   var fish = {};
-  db.query('SELECT * FROM fish JOIN family',function(err,rows){
+  db.query('SELECT * FROM fish',function(err,rows){
     if(err){
       throw err;
     } else {
@@ -30,7 +30,7 @@ router.get('/search', function(req, res, next) {
     res.end();
   }
   if (term === undefined)
-    db.query('SELECT * FROM fish INNER JOIN family', callback);
+    db.query('SELECT * FROM fish', callback);
   else
   {
     var term = '%' + term + '%';
