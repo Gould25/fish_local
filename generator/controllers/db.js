@@ -7,7 +7,8 @@ var connection = mysql.createConnection({
   host : 'localhost',
   user : 'root',
   password : '1205',
-  database : 'Fish_local'
+  database : 'Fish_local',
+  multipleStatements: true
 });
 
 // establish connection

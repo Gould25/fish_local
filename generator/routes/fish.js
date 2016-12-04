@@ -8,7 +8,7 @@ var db = require('./../controllers/db.js');
 router.get('/', function(req, res){
   // read table
   var fish = {};
-  db.query('SELECT * FROM fish',function(err,rows){
+  db.query('SELECT * FROM fish JOIN family',function(err,rows){
     if(err){
       throw err;
     } else {

@@ -17,6 +17,7 @@ var fishlog = require('./routes/fishlog');
 var locations = require('./routes/locations');
 var baits = require('./routes/baits');
 var addfish = require('./routes/addfish');
+var insert_message = require('./routes/insert_message');
 
 
 var app = express();
@@ -44,6 +45,7 @@ app.use('/fishlog', fishlog);
 app.use('/locations', locations);
 app.use('/baits', baits);
 app.use('/addfish', addfish);
+app.use('/insert_message', insert_message);
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
