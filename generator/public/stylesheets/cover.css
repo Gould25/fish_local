@@ -30,15 +30,18 @@ body {
   background-color: #333;
 }
 body {
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  color: #000;
 }
 
 h1 {
+  height: 100%;
   text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+
 }
 h3 {
   text-align: center;
+  margin-bottom: 10px;
 }
 img.center {
     display: block;
@@ -51,8 +54,8 @@ img.center {
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
-  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+  -webkit-box-shadow: inset 0 0 50px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 50px rgba(0,0,0,.5);
 }
 .site-wrapper-inner {
   display: table-cell;
@@ -65,7 +68,7 @@ img.center {
 
 /* Padding for spacing */
 .inner {
-  padding: 30px;
+  padding: 155px;
 }
 
 
@@ -73,15 +76,17 @@ img.center {
  * Header
  */
 .masthead-brand {
-  margin-top: 10px;
+  margin-top: 1px;
   margin-bottom: 10px;
+  font-size: 42px;
+  float: top;
 }
 
 .masthead-nav > li {
   display: inline-block;
 }
 .masthead-nav > li + li {
-  margin-left: 10px;
+  margin-left: 80px;
 }
 .masthead-nav > li > a {
   padding-right: 0;
@@ -102,16 +107,16 @@ img.center {
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
+  color: #000;
   border-bottom-color: #fff;
 }
 
 @media (min-width: 768px) {
   .masthead-brand {
-    float: left;
+    float: middle;
   }
   .masthead-nav {
-    float: right;
+    float: middle;
   }
 }
 
@@ -121,10 +126,10 @@ img.center {
  */
 
 .cover {
-  padding: 0 20px;
+  padding: 0 10px;
 }
 .cover .btn-lg {
-  padding: 10px 20px;
+  padding: 10px 10px;
   font-weight: bold;
 }
 
@@ -158,7 +163,7 @@ img.center {
   }
   /* Start the vertical centering */
   .site-wrapper-inner {
-    vertical-align: middle;
+    vertical-align: text-top;;
   }
   /* Handle the widths */
   .masthead,
