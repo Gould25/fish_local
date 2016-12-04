@@ -30,7 +30,7 @@ router.get('/search', function(req, res, next) {
     res.end();
   }
   if (term === undefined)
-    db.query('SELECT * FROM fish', callback);
+    db.query('SELECT * FROM fish INNER JOIN family', callback);
   else
   {
     var term = '%' + term + '%';

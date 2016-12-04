@@ -11,7 +11,7 @@ USE Fish_local;
 /* Creating table fish */
 CREATE TABLE if NOT EXISTS fish(
   fishName Varchar(25) NOT NULL,
-  ave_wght Varchar(15) NOT NULL,
+  ave_wght Varchar(15),
   picture Varchar(55),
   PRIMARY KEY (fishName)
 );
@@ -63,8 +63,8 @@ CREATE TABLE if NOT EXISTS bait(
 /*Creating table Artificial */
 CREATE TABLE if NOT EXISTS artificial(
   baitName VARCHAR(25) NOT NULL,
-  size VARCHAR(15),
-  color VARCHAR(15),
+  size VARCHAR(55),
+  color VARCHAR(55),
   PRIMARY KEY (size,color),
   FOREIGN KEY (baitName) REFERENCES bait (baitName)
     ON UPDATE CASCADE ON DELETE CASCADE
@@ -95,10 +95,10 @@ CREATE TABLE if NOT EXISTS bank(
 CREATE TABLE IF NOT EXISTS fishlog(
   logNum INTEGER NOT NULL AUTO_INCREMENT,
   fishName VARCHAR(25) NOT NULL,
-  loc_id INTEGER(3),
+  loc_id INTEGER(3) NOT NULL,
   wght FLOAT(6),
   length FLOAT(5),
-  baitName VARCHAR(25),
+  baitName VARCHAR(25) NOT NULL,
   notes TEXT,
   PRIMARY KEY (logNum),
   FOREIGN KEY (fishName) REFERENCES fish (fishName)
