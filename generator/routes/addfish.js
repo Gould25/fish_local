@@ -3,7 +3,7 @@ var router = express.Router();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var db = require('./../controllers/db.js');
-var db = require('./../controllers/insertfish.js');
+var fish = require('./../controllers/fish.js');
 
 
 
@@ -14,6 +14,7 @@ router.get('/', function(req, res, next){
 router.post('/', function(req, res){
   res.render('addfish');
     console.log(req.body);
+    fish.insert(req.body);
     res.send("recieved your request!");
 });
 router.post('/show_message', function(req, res){
