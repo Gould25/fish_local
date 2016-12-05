@@ -1,0 +1,27 @@
+<table id="table" class="table" >
+
+  <thead>
+
+    <tr>
+      <th> Location ID </th>
+      <th> Latitude </th>
+      <th> Longitude </th>
+      <th> Body of Water </th>
+      <th> State </th>
+      <th> County </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% print.forEach(function(Fish_local){ %>
+      <tr>
+        <td><%=Fish_local.loc_id %></td>
+        <td><%=Fish_local.lat %></td>
+        <td><%=Fish_local.lng %></td>
+        <td><%=Fish_local.b_o_w %></td>
+        <td><%=Fish_local.state %></td>
+        <td><%=Fish_local.county %></td>
+    <% }) %>
+  </tbody>
+
+</table>

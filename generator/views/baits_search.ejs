@@ -1,0 +1,19 @@
+<table id="table" class="table" >
+
+  <thead>
+
+    <tr>
+      <th> Bait Name </th>
+      <th> Description </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% print.forEach(function(Fish_local){ %>
+      <tr>
+        <td><%=Fish_local.baitName %></td>
+        <td><%=Fish_local.description %></td>
+    <% }) %>
+  </tbody>
+
+</table>

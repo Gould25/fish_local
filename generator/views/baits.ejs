@@ -1,26 +1,29 @@
+<div class="inner cover">
+  <h1 class="cover-heading">Baits</h1>
+  </p>
+</div>
+<div class="input-group">
+  <span class="input-group-addon">
+    <i class="glyphicon glyphicon-search"></i>
+  </span>
+  <input type="text" data-bind="textInput: term" class="form-control" placeholder="Search" />
+</div>
+</div>
+<div id="fish-result">
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+var viewModel = {
+  term: ko.observable("")
+};
 
+viewModel.term.subscribe(function(newValue) {
+  $.get('/baits/search', { term: newValue }, function(data) {
+    $('#fish-result').html(data);
+  });
+});
 
-          <div class="inner cover">
-            <h1 class="cover-heading">Bait</h1>
-            </p>
-          </div>
-
-          <table id="table" class="table" >
-
-            <thead>
-
-              <tr>
-                <th> Bait Name </th>
-                <th> Description </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% print.forEach(function(Fish_local){ %>
-                <tr>
-                  <td><%=Fish_local.baitName %></td>
-                  <td><%=Fish_local.description %></td>
-              <% }) %>
-            </tbody>
-
-          </table>
+ko.applyBindings(viewModel);
+viewModel.term.valueHasMutated();
+});
+</script>

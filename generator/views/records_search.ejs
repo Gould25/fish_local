@@ -1,0 +1,21 @@
+<table id="table" class="table" >
+  <thead>
+    <tr>
+      <th> Fish Name </th>
+      <th> Body of Water </th>
+      <th> Weight </th>
+      <th> Date </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% print.forEach(function(Fish_local){ %>
+      <tr>
+        <td><%=Fish_local.fishName %></td>
+        <td><%=Fish_local.b_o_w %></td>
+        <td><%=Fish_local.wght %></td>
+        <td><%=Fish_local.date_caught %></td>
+    <% }) %>
+  </tbody>
+</table>
+ 
