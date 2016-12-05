@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var search = require('./../controllers/search.js');
 var db = require('./../controllers/db.js');
+
 
 
 
@@ -29,13 +31,7 @@ router.get('/search', function(req, res, next) {
     res.render("fish-search", fish);
     res.end();
   }
-  if (term === undefined)
-    db.query('SELECT * FROM fish', callback);
-  else
-  {
-    var term = '%' + term + '%';
-    db.query('SELECT * FROM fish WHERE fishName LIKE ?', [term], callback);
-  }
+  search.fish(term, callback);
 });
 
 module.exports = router;
