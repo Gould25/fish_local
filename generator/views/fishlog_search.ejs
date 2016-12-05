@@ -1,0 +1,29 @@
+<table id="table" class="table" >
+
+  <thead>
+
+    <tr>
+      <th> Log# </th>
+      <th> Fish Name </th>
+      <th> Location ID </th>
+      <th> Weight </th>
+      <th> Length </th>
+      <th> Bait </th>
+      <th> Notes </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% print.forEach(function(Fish_local){ %>
+      <tr>
+        <td><%=Fish_local.logNum %></td>
+        <td><%=Fish_local.fishName %></td>
+        <td><%=Fish_local.loc_id %></td>
+        <td><%=Fish_local.wght %></td>
+        <td><%=Fish_local.length %></td>
+        <td><%=Fish_local.baitName %></td>
+        <td><%=Fish_local.notes %></td>
+    <% }) %>
+  </tbody>
+
+</table>

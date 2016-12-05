@@ -1,30 +1,30 @@
+<div class="inner cover">
+  <h1 class="cover-heading">Missouri State Record Fish</h1>
+  </p>
+</div>
 
+<div class="input-group">
+  <span class="input-group-addon">
+    <i class="glyphicon glyphicon-search"></i>
+  </span>
+  <input type="text" data-bind="textInput: term" class="form-control" placeholder="Search" />
+</div>
+</div>
+<div id="fish-result">
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+var viewModel = {
+  term: ko.observable("")
+};
 
-          <div class="inner cover">
-            <h1 class="cover-heading">Missouri State Record Fish</h1>
-            </p>
-          </div>
+viewModel.term.subscribe(function(newValue) {
+  $.get('/records/search', { term: newValue }, function(data) {
+    $('#fish-result').html(data);
+  });
+});
 
-          <table id="table" class="table" >
-
-            <thead>
-
-              <tr>
-                <th> Fish Name </th>
-                <th> Body of Water </th>
-                <th> Weight </th>
-                <th> Date </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% print.forEach(function(Fish_local){ %>
-                <tr>
-                  <td><%=Fish_local.fishName %></td>
-                  <td><%=Fish_local.b_o_w %></td>
-                  <td><%=Fish_local.wght %></td>
-                  <td><%=Fish_local.date_caught %></td>
-              <% }) %>
-            </tbody>
-
-          </table>
+ko.applyBindings(viewModel);
+viewModel.term.valueHasMutated();
+});
+</script>
