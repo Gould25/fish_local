@@ -6,8 +6,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var multer = require('multer');
-var upload = multer();
+
 
 var routes = require('./routes/index');
 var fish = require('./routes/fish');
@@ -44,7 +43,6 @@ app.use(cookieParser());
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
-app.use(upload.array());
 
 app.use('/', routes);
 app.use('/fish', fish);
@@ -68,6 +66,7 @@ app.use('/insert_error', insert_error);
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use('/knockout', express.static(__dirname + '/node_modules/knockout/build/output/'));
+app.use('/images', express.static(__dirname + '/public/images/'));
 
 
 /// catch 404 and forwarding to error handler

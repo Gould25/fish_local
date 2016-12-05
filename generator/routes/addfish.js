@@ -3,47 +3,46 @@ var router = express.Router();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var db = require('./../controllers/db.js');
+var fish = require('./../controllers/fish.js');
+var alias = require('./../controllers/alias.js');
+var family = require('./../controllers/family.js');
+var multer = require('multer');
+var upload = multer({ dest: 'public/images/fish_uploads/' });
 
 router.get('/', function(req, res, next){
   res.render('addfish');
 });
 
-router.post('/', function(req, res){
 
-  var fish = {
-    fishName:req.body.fishName,
-    ave_wght:req.body.ave_wght
-  };
-  var family = {
-    fishName:req.body.fishName,
-    familyName:req.body.familyName
-  };
-  var alias = {
-    fishName:req.body.fishName,
-    aliasName:req.body.aliasName
-  };
-
-  db.query('insert into fish set ?', fish , function(err, info){
-    if (err) {
-      res.render('insert_error');
-    }
-  });
-
-  db.query('insert into family set ?', family , function(err, info){
-    if (err) {
-      res.render('insert_error');
-    }
-  });
-
-  db.query('insert into alias set ?', alias , function(err, info){
-    if (err) {
-      res.render('insert_error');
-    }
-    else{
-      res.render('insert_message');
-    }
-  });
-  console.log(fish);
+router.post('/', upload.single("picture"), function(req, res){
+    console.log(req.body);
+    console.log(req.file);
+    fish.insert(req, function(err) {
+      if (err) {
+        console.log(err);
+        res.render('insert_error');
+      } else  {
+        family.insert(req, function(err) {
+          if (err) {
+            console.log(err);
+            res.render('insert_error');
+          } else {
+            if (req.body.aliasName != '') {
+              alias.insert(req, function(err) {
+                if (err) {
+                  console.log(err);
+                  res.render('insert_error');
+                }
+                else
+                  res.render('insert_message');
+              });
+            } else {
+              res.render('insert_message');
+            }
+          }
+        });
+      }
+    });
 });
 
 
