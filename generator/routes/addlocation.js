@@ -21,8 +21,7 @@ router.post('/', function(req, res){
   db.query('insert into location set ?', location , function(err, info){
     if (err) {
       res.render('insert_error');
-    }
-    else{
+    }else{
       res.render('insert_message');
     }
   });

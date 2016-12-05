@@ -77,20 +77,6 @@ CREATE TABLE if NOT EXISTS organic(
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-/*Creating table boat */
-CREATE TABLE if NOT EXISTS boat(
-  loc_id INTEGER(3) NOT NULL,
-  FOREIGN KEY (loc_id) REFERENCES location (loc_id)
-    ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-/*Creating table bank*/
-CREATE TABLE if NOT EXISTS bank(
-  loc_id INTEGER(3) NOT NULL,
-  FOREIGN KEY (loc_id) REFERENCES location (loc_id)
-    ON UPDATE CASCADE ON DELETE CASCADE
-);
-
 /*Creating table fishlog */
 CREATE TABLE IF NOT EXISTS fishlog(
   logNum INTEGER NOT NULL AUTO_INCREMENT,
@@ -245,14 +231,6 @@ VALUES  ("Nightcrawlers"),
         ("Stink bait"),
         ("Cut Shad"),
         ("Small Minnow")
-;
-
-INSERT INTO boat(loc_id)
-VALUES  (1),(3),(5),(7),(8)
-;
-
-INSERT INTO bank(loc_id)
-VALUES  (1),(2),(3),(4),(5),(6),(7)
 ;
 
 INSERT INTO fishlog(fishName,loc_id,wght,length,baitName,notes)
