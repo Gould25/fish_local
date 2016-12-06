@@ -1,0 +1,52 @@
+<div class="inner cover">
+  <h1 class="cover-heading">Update Bait</h1>
+  </p>
+</div>
+
+<div id="form_input">
+  <form id="addfish_form" method="post" action="" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6"><label for="baitName">Enter Bait Name:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="baitName" id="baitName" placeholder="Bait Name" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="description">Enter Description:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="description" id="description" placeholder= "Description"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="size">Enter Size:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="size" id="size" placeholder= "Size"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="color">Enter Color: </label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="color" id="color" placeholder="Color"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><a id="add-fish-btn" class="btn btn-default" href="#">Update Bait</a></div>
+    </div>
+  </form>
+</div>
+
+<div id="form_output">
+
+</div>
+
+<script type="text/javascript">
+
+ function updatebait(){
+   var baitName = document.getElementById("baitName").value;
+   var description = document.getElementById("description").value;
+   var size = document.getElementById("size").value;
+   var color = document.getElementById("color").value;
+}
+
+</script>
+
+<script type="text/javascript" >
+jQuery(document).ready(function($) {
+  $("#add-fish-btn").click(function(e) {
+    e.preventDefault();
+    $('#addfish_form').submit();
+  })
+});
+</script>

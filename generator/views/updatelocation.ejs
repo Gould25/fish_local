@@ -1,0 +1,62 @@
+<div class="inner cover">
+  <h1 class="cover-heading">Update Location</h1>
+  </p>
+</div>
+
+<div id="form_input">
+  <form id="addfish_form" method="post" action="" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6"><label for="loc_id">Enter location id#:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="loc_id" id="loc_id" placeholder="Location id" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="lat">Enter Latitude:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="lat" id="lat" placeholder= "Latitude"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="lng">Enter Longitude:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="lng" id="lng" placeholder= "Longitude"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="b_o_w">Enter Body of Water: </label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="b_o_w" id="b_o_w" placeholder="Body of Water"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="state">Enter State: </label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="state" id="state" placeholder="State"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="county">Enter County: </label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="county" id="county" placeholder="County"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><a id="add-fish-btn" class="btn btn-default" href="#">Update Location</a></div>
+    </div>
+  </form>
+</div>
+
+<div id="form_output">
+
+</div>
+
+<script type="text/javascript">
+
+ function updatelocation(){
+   var loc_id = document.getElementById("loc_id").value;
+   var lat = document.getElementById("lat").value;
+   var lng = document.getElementById("lng").value;
+   var b_o_w = document.getElementById("b_o_w").value;
+   var state = document.getElementById("state").value;
+   var county = document.getElementById("county").value;
+}
+
+</script>
+
+<script type="text/javascript" >
+jQuery(document).ready(function($) {
+  $("#add-fish-btn").click(function(e) {
+    e.preventDefault();
+    $('#addfish_form').submit();
+  })
+});
+</script>

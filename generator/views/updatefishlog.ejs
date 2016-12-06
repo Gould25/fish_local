@@ -1,0 +1,67 @@
+<div class="inner cover">
+  <h1 class="cover-heading">Update Fish Log</h1>
+  </p>
+</div>
+
+<div id="form_input">
+  <form id="addfish_form" method="post" action="" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6"><label for="logNum">Enter Fish Log Number:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="logNum" id="logNum" placeholder="Log #" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="fishName">Enter fish name:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="fishName" id="fishName" placeholder="Fish Name" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="loc_id">Enter location id#:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="loc_id" id="loc_id" placeholder="Location id" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="wght">Enter Fish&rsquo;s weight:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="wght" id="wght" placeholder= "Weight"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="length">Enter Length:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="length" id="length" placeholder="Length" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="baitName">Enter Bait Name:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="baitName" id="baitName" placeholder="Bait Name" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="notes">Enter a Note:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="notes" id="notes" placeholder="Notes" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><a id="add-fish-btn" class="btn btn-default" href="#">Update Fish Log</a></div>
+    </div>
+  </form>
+</div>
+
+<div id="form_output">
+
+</div>
+
+<script type="text/javascript">
+
+ function updatelocation(){
+   var logNum = document.getElementById("logNum").value;
+   var fishName = document.getElementById("fishName").value;
+   var loc_id = document.getElementById("loc_id").value;
+   var wght = document.getElementById("wght").value;
+   var length = document.getElementById("length").value;
+   var baitName = document.getElementById("baitName").value;
+   var notes = document.getElementById("notes").value;
+}
+
+</script>
+
+<script type="text/javascript" >
+jQuery(document).ready(function($) {
+  $("#add-fish-btn").click(function(e) {
+    e.preventDefault();
+    $('#addfish_form').submit();
+  })
+});
+</script>
