@@ -15,16 +15,18 @@
           <div id="fish-result">
           </div>
           <div id="bottom-nav">
-            <a class="btn btn-default" id="map" href="#">View Map</a>
+            <a class="btn btn-default" id="map-btn" href="#">View Map</a>
           </div>
           <div class="modal fade" id="location-modal" tabindex="-1" role="dialog">
-           <div class="modal-dialog" role="document">
+           <div class="modal-dialog modal-lg" role="document">
              <div class="modal-content">
                <div class="modal-header">
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                  <h4 class="modal-title">Location Map</h4>
                </div>
                <div class="modal-body">
+                  <div id="map">
+                  </div>
                </div>
                <div class="modal-footer">
                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -50,9 +52,28 @@
           </script>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-  $("#map").click(function(e) {
+  $("#map-btn").click(function(e) {
     e.preventDefault();
-    $('#location-modal').modal('show');
+    $.get('/locations/all', function(data) {
+      $('#location-modal').modal('show');
+      var map_options = {
+        zoom: 5,
+        center: { lat: 37.9643, lng:  -91.8318 }
+      };
+      var map = new google.maps.Map(document.getElementById('map'), map_options);
+
+      $(data).each(function(i,e) {
+        var marker = new google.maps.Marker({
+          position: { lat: e.lat, lng: e.lng},
+          title: e.b_o_w,
+          map: map
+        });
+      });
+      google.maps.event.trigger(map, 'resize');
+      map.setCenter(map_options.center);
+    });
   });
 });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiCVbvvv9LKQbHukI1ln3RkzkFbyWHPbs">
 </script>

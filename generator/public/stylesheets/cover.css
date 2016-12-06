@@ -83,6 +83,15 @@ img.center {
   padding: 155px;
 }
 
+#location-modal .modal-lg .modal-body {
+  height: 600px;
+}
+
+#location-modal .modal-lg .modal-body #map
+{
+  height: 90%;
+  width: 90%;
+}
 
 /*
  * Header
