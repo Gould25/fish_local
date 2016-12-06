@@ -4,7 +4,6 @@ function Updatebait() { }
 
 // Update baut
 Updatebait.prototype.Updatebait = function(req, callback) {
-  console.log("Got here update!!!")
 
   if (req.body.description != ''){
     db.query('update bait SET description = ? Where baitName = ?',

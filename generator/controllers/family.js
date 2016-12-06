@@ -3,10 +3,9 @@ var db = require('./../controllers/db.js');
 function Family() { }
 
 Family.prototype.insert = function(req, callback) {
-  console.log("Got here!!!")
 
   // Add entry to database
-   db.query('insert into family (fishName, familyName) VALUES (?, ?)', 
+   db.query('insert into family (fishName, familyName) VALUES (?, ?)',
     [req.body.fishName, req.body.familyName], callback)
 }
 

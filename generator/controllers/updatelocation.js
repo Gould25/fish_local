@@ -3,7 +3,6 @@ var db = require('./../controllers/db.js');
 function Updatelocation() { }
 
 Updatelocation.prototype.Updatelocation = function(req, callback) {
-  console.log("Got here update!!!")
 
   if (req.body.lat != ''){
     db.query('update location SET lat = ? Where loc_id = ?',
