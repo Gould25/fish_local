@@ -85,6 +85,7 @@ img.center {
 /* Padding for spacing */
 .inner {
   padding: 155px;
+  padding-top: 2em;
 }
 
 #location-modal .modal-lg .modal-body {
