@@ -3,7 +3,6 @@ var db = require('./../controllers/db.js');
 function Updatefishlog() { }
 
 Updatefishlog.prototype.Updatefishlog = function(req, callback) {
-  console.log("Got here update!!!")
 
   if (req.body.fishName != ''){
     db.query('update fishlog SET fishName = ? Where logNum = ?',

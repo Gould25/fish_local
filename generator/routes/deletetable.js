@@ -3,18 +3,17 @@ var router = express.Router();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var db = require('./../controllers/db.js');
-var insertlocation = require('./../controllers/insertlocation.js');
+var removetable = require('./../controllers/removetable.js');
 var multer = require('multer');
 var upload = multer({ dest: 'public/images/fish_uploads/' });
 
 router.get('/', function(req, res, next){
-  res.render('addlocation');
+  res.render('deletetable');
 });
-
 
 router.post('/',upload.single("picture"), function(req, res){
     console.log(req.body);
-    insertlocation.insertlocation(req, function(err) {
+    removetable.deletetable(req, function(err) {
       if (err) {
         console.log(err);
         res.render('insert_error');
@@ -23,5 +22,4 @@ router.post('/',upload.single("picture"), function(req, res){
       }
     });
 });
-
 module.exports = router;
