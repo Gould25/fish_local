@@ -1,0 +1,16 @@
+<div class="row">
+  <div id="fish-detail-image" class="col-md-12"><img src="<%- detail.fish.picture -%>" alt="<%- detail.fish.fishName -%>"></div>
+</div>
+<div class="row">
+  <div class="col-md-6"><strong>Average Weight</strong></div>
+  <div class="col-md-6"><strong>Aliases</strong></div>
+</div>
+<div class="row">
+  
+  <div class="col-md-6"><%- detail.fish.ave_wght -%></div>
+  <div class="col-md-6">
+    <% detail.aliases.forEach(function(alias) {%>
+    <div class="col-md-12"><%- alias.aliasName -%></div>
+    <% }) %>
+  </div>
+</div>

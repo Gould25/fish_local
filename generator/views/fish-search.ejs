@@ -6,7 +6,7 @@
               <tr>
                 <th> Fish Name </th>
                 <th> Average Weight </th>
-                <th> Picture Filename </th>
+                <th> &nbsp; </th>
               </tr>
             </thead>
 
@@ -15,7 +15,7 @@
                 <tr>
                   <td><%=Fish_local.fishName %></td>
                   <td><%=Fish_local.ave_wght %></td>
-                  <td><%=Fish_local.picture %></td>
+                  <td><a class="btn btn-default fish-detail" href="/fish/get/<%-Fish_local.fishName %>" data-fish-name="<%-Fish_local.fishName %>">Detail</a></td>
               <% }) %>
             </tbody>
 
