@@ -55,22 +55,29 @@ jQuery(document).ready(function($) {
   $("#map-btn").click(function(e) {
     e.preventDefault();
     $.get('/locations/all', function(data) {
-      $('#location-modal').modal('show');
       var map_options = {
-        zoom: 5,
-        center: { lat: 37.9643, lng:  -91.8318 }
+        zoom: 11,
+        center: new google.maps.LatLng(37.9643, -91.8318),
       };
       var map = new google.maps.Map(document.getElementById('map'), map_options);
 
       $(data).each(function(i,e) {
         var marker = new google.maps.Marker({
-          position: { lat: e.lat, lng: e.lng},
-          title: e.b_o_w,
-          map: map
+          position: new google.maps.LatLng(e.lat, e.lng),
+          map: map,
         });
+        marker.info = new google.maps.InfoWindow({
+          content: '<b>' + e.b_o_w + '</b>'
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          marker.info.open(map, marker);
+});
       });
-      google.maps.event.trigger(map, 'resize');
-      map.setCenter(map_options.center);
+      $(document).on("shown.bs.modal", "#location-modal" , function () {
+        google.maps.event.trigger(map, "resize");
+      });
+      $('#location-modal').modal('show');
     });
   });
 });
