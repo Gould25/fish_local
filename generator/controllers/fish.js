@@ -7,8 +7,13 @@ Fish.prototype.insert = function(req, callback) {
 
   // Upload picture to filesystem
   var path = null;
-  if (req.file != null)
+  if (req.file != null) {
     path = req.file.path.replace('public', '');
+
+    // Fix slashes on Windows
+    path = path.replace(/\\/g, '/');
+  }
+
 
   // Add entry to database
 
@@ -49,6 +54,33 @@ Fish.prototype.insert = function(req, callback) {
         });
       }
     });
+  });
+}
+
+Fish.prototype.get = function(fish_name, callback) {
+  var fish;
+  var aliases;
+  var family;
+  db.query("SELECT fishName, ave_wght, picture FROM fish WHERE fishName = ?", [fish_name], 
+    function(err, rows) {
+      if (err)
+        throw (err);
+      fish = rows[0];
+      db.query('SELECT familyName FROM family WHERE fishName = ?', [fish_name], 
+        function(err, rows) {
+          if (err) {
+            throw (err);
+          }
+          family = rows[0];
+          db.query('SELECT aliasName FROM alias WHERE fishName = ?', [fish_name],
+            function(err, rows) {
+              if (err)
+                throw (err);
+              aliases = rows;
+              var detail = { fish: fish, family: family, aliases: aliases }
+              callback(err, detail);
+            });
+        });
   });
 }
 module.exports = new Fish();
