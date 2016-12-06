@@ -4,13 +4,14 @@ var Fish = function() { }
 
 // Insert fish
 Fish.prototype.insert = function(req, callback) {
-  console.log("Got here!!!")
+
   // Upload picture to filesystem
   var path = null;
   if (req.file != null)
     path = req.file.path.replace('public', '');
 
   // Add entry to database
+<<<<<<< HEAD
   db.beginTransaction(function() {
     db.query('insert into fish (fishName, ave_wght, picture) VALUES (?, ?, ?)', 
       // Write fish record
@@ -49,7 +50,9 @@ Fish.prototype.insert = function(req, callback) {
       }
     });
   });
+=======
+  db.query('insert into fish (fishName, ave_wght, picture) VALUES (?, ?, ?)',
+    [req.body.fishName, req.body.wght, path], callback);
+>>>>>>> recordup
 }
 module.exports = new Fish();
-
-

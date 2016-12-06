@@ -4,7 +4,6 @@ function UpdateFish() { }
 
 // Insert fish
 UpdateFish.prototype.UpdateFish = function(req, callback) {
-  console.log("Got here update!!!")
 
   // Upload picture to filesystem
   var path = null;
