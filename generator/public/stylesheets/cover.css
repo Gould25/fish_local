@@ -33,6 +33,18 @@ body {
   color: #000;
 }
 
+#bottom-nav {
+  text-align: center;
+}
+.front {
+  max-width: 100%;
+  height: auto;
+}
+
+#front-page-content {
+  text-align: center;
+}
+
 h1 {
   height: 100%;
   text-align: center;
@@ -66,11 +78,24 @@ img.center {
   margin-left: auto;
 }
 
+#fish-detail-image {
+  text-align: center;
+}
+
 /* Padding for spacing */
 .inner {
   padding: 155px;
 }
 
+#location-modal .modal-lg .modal-body {
+  height: 600px;
+}
+
+#location-modal .modal-lg .modal-body #map
+{
+  height: 90%;
+  width: 90%;
+}
 
 /*
  * Header

@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var db = require('./../controllers/db.js');
+var search = require ('./../controllers/search.js');
+var location = require('./../controllers/location.js');
 
 // read table
 var fish = {};
@@ -16,6 +18,18 @@ router.get('/', function(req, res){
     }
   });
 });
+
+router.get('/all', function(req, res) {
+  location.get_all(function(err, rows) {
+    if (err) {
+      throw err;
+    }
+
+    res.send(rows);
+    res.end();
+  });
+});
+
 router.get('/search', function(req, res, next) {
   var term = req.query.term;
   var callback = function(err, rows) {
@@ -26,13 +40,9 @@ router.get('/search', function(req, res, next) {
     res.render("location_search", fish);
     res.end();
   }
-  if (term === undefined)
-    db.query('SELECT * FROM location', callback);
-  else
-  {
-    var term = '%' + term + '%';
-    db.query('SELECT * FROM location WHERE b_o_w LIKE ?', [term], callback);
-  }
+
+  search.locations(term, callback);
+  
 });
 
 module.exports = router;
