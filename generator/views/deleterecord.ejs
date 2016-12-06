@@ -1,0 +1,52 @@
+<div class="inner cover">
+  <h1 class="cover-heading">Delete Record</h1>
+  </p>
+</div>
+
+<div id="form_input">
+  <form id="addfish_form" method="post" action="" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6"><label for="fishName">Enter Fish to Delete:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="fishName" id="fishName" placeholder= "Fish"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="loc_id">Enter Location to Delete:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="loc_id" id="loc_id" placeholder= "Location ID #"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="baitName">Enter Bait Name:</label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="baitName" id="baitName" placeholder="Bait Name" /></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label for="fishlog">Enter Fish Log # to Delete: </label></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="fishlog" id="fishlog" placeholder="Fish Log #"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><a id="add-fish-btn" class="btn btn-default" href="#">Delete Record</a></div>
+    </div>
+  </form>
+</div>
+
+<div id="form_output">
+
+</div>
+
+<script type="text/javascript">
+
+ function deleterecord(){
+   var fishName = document.getElementById("fishName").value;
+   var loc_id = document.getElementById("loc_id").value;
+   var baitName = document.getElementById("baitName").value;
+   var fishlog = document.getElementById("fishlog").value;
+}
+
+</script>
+
+<script type="text/javascript" >
+jQuery(document).ready(function($) {
+  $("#add-fish-btn").click(function(e) {
+    e.preventDefault();
+    $('#addfish_form').submit();
+  })
+});
+</script>

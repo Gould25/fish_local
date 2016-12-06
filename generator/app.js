@@ -30,6 +30,8 @@ var updatebait = require('./routes/updatebait');
 var updatefishlog = require('./routes/updatefishlog');
 var insert_message = require('./routes/insert_message');
 var insert_error = require('./routes/insert_error');
+var deleterecord = require('./routes/deleterecord');
+var deletetable = require('./routes/deletetable');
 
 
 var app = express();
@@ -70,6 +72,8 @@ app.use('/updatelocation', updatelocation);
 app.use('/updatebait', updatebait);
 app.use('/insert_message', insert_message);
 app.use('/insert_error', insert_error);
+app.use('/deleterecord', deleterecord);
+app.use('/deletetable', deletetable);
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
