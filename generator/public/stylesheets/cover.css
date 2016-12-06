@@ -38,6 +38,10 @@ body {
   height: auto;
 }
 
+#front-page-content {
+  text-align: center;
+}
+
 h1 {
   height: 100%;
   text-align: center;
