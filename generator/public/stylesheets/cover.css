@@ -33,6 +33,11 @@ body {
   color: #000;
 }
 
+.front {
+  max-width: 100%;
+  height: auto;
+}
+
 h1 {
   height: 100%;
   text-align: center;
