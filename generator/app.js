@@ -24,6 +24,7 @@ var addlocation = require('./routes/addlocation');
 var addrecord = require('./routes/addrecord');
 var addfishlog = require('./routes/addfishlog');
 var addbait = require('./routes/addbait');
+var updatefish = require('./routes/updatefish');
 var insert_message = require('./routes/insert_message');
 var insert_error = require('./routes/insert_error');
 
@@ -60,6 +61,7 @@ app.use('/addlocation', addlocation);
 app.use('/addrecord', addrecord);
 app.use('/addfishlog', addfishlog);
 app.use('/addbait', addbait);
+app.use('/updatefish', updatefish);
 app.use('/insert_message', insert_message);
 app.use('/insert_error', insert_error);
 
