@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var db = require('./../controllers/db.js');
+var search = require ('./../controllers/search.js');
 
 // read table
 var fish = {};
@@ -26,13 +27,9 @@ router.get('/search', function(req, res, next) {
     res.render("location_search", fish);
     res.end();
   }
-  if (term === undefined)
-    db.query('SELECT * FROM location', callback);
-  else
-  {
-    var term = '%' + term + '%';
-    db.query('SELECT * FROM location WHERE b_o_w LIKE ?', [term], callback);
-  }
+
+  search.locations(term, callback);
+  
 });
 
 module.exports = router;
