@@ -11,7 +11,6 @@ router.get('/', function(req, res, next){
   res.render('addfish');
 });
 
-
 router.post('/', upload.single("picture"), function(req, res){
   console.log(req.body);
   console.log(req.file);
