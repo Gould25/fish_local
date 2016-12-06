@@ -11,6 +11,19 @@ var connection = mysql.createConnection({
   multipleStatements: true
 });
 
+/*
+ * Azure connection 
+ * 
+ var connection = mysql.createConnection({
+  host : '127.0.0.1',
+  port : 49941,
+  user : 'azure',
+  password : '6#vWHD_$',
+  database : 'localdb',
+  multipleStatements: true
+});
+*/
+
 // establish connection
 connection.connect(function(err){
   if(err) throw err;
