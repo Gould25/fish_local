@@ -33,6 +33,9 @@ body {
   color: #000;
 }
 
+#bottom-nav {
+  text-align: center;
+}
 .front {
   max-width: 100%;
   height: auto;
