@@ -7,8 +7,13 @@ Fish.prototype.insert = function(req, callback) {
   console.log("Got here!!!")
   // Upload picture to filesystem
   var path = null;
-  if (req.file != null)
+  if (req.file != null) {
     path = req.file.path.replace('public', '');
+
+    // Fix slashes on Windows
+    path = path.replace(/\\/g, '/');
+  }
+
 
   // Add entry to database
   db.beginTransaction(function() {
