@@ -7,15 +7,15 @@
   <form id="addfish_form" method="post" action="" enctype="multipart/form-data">
     <div class="row">
       <div class="col-md-6"><label for="fishName">Enter fish name:</label></div> 
-      <div class="col-md-6"><input class="form-control" type="text" name="fishName" id="fishName" placeholder="Fish Name" /></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="fishName" id="fishName" placeholder="Fish Name" required data-toggle="tooltip" data-placement="top" title="Fish name is required" /></div>
     </div>
     <div class="row">
       <div class="col-md-6"><label for="wght">Enter Fish&rsquo;s average weight:</label></div>
-      <div class="col-md-6"><input class="form-control" type="text" name="wght" id="wght" placeholder= "Weight"/></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="wght" id="wght" placeholder= "Weight" required data-toggle="tooltip" data-placement="top" title="Weight is required" /></div>
     </div> 
     <div class="row">
       <div class="col-md-6"><label for="familyName">Enter fish family name:</label></div>
-      <div class="col-md-6"><input class="form-control" type="text" name="familyName" id="familyName" placeholder="Required"/></div>
+      <div class="col-md-6"><input class="form-control" type="text" name="familyName" id="familyName" placeholder="Required" required data-toggle="tooltip" data-placement="top" title="Family name is required"/></div>
     </div> 
     <div class="row">
       <div class="col-md-6"><label for="aliasName">Enter fish alias:</label></div>
@@ -59,8 +59,16 @@
 <script type="text/javascript" >
 jQuery(document).ready(function($) {
   $("#add-fish-btn").click(function(e) {
+    var valid = true;
     e.preventDefault();
-    $('#addfish_form').submit();
+    $('#addfish_form [required]').each(function(i, e) {
+      if (!($(e).val())) {
+        valid = false;
+        $(e).tooltip({ trigger: 'manual' }).tooltip('show');
+      }
+    });
+    if (valid)
+      $('#addfish_form').submit();
   })
 });
 </script>
