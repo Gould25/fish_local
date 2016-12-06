@@ -4,10 +4,10 @@ var mysql = require('mysql');
 
 // define connection
 var connection = mysql.createConnection({
-  host : 'localhost',
-  user : 'root',
-  password : '1205',
-  database : 'Fish_local',
+  host : '127.0.0.1',
+  user : 'azure',
+  password : '6#vWHD_$',
+  database : 'localdb',
   multipleStatements: true
 });
 
