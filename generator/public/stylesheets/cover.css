@@ -78,6 +78,10 @@ img.center {
   margin-left: auto;
 }
 
+#fish-detail-image {
+  text-align: center;
+}
+
 /* Padding for spacing */
 .inner {
   padding: 155px;
