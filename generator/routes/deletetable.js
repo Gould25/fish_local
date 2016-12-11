@@ -8,7 +8,7 @@ var multer = require('multer');
 var upload = multer({ dest: 'public/images/fish_uploads/' });
 
 router.get('/', function(req, res, next){
-  res.render('deletetable');
+  res.render('admin/deletetable');
 });
 
 router.post('/',upload.single("picture"), function(req, res){

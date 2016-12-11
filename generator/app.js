@@ -63,7 +63,7 @@ app.use('/artificial', artificial);
 app.use('/natural', natural);
 app.use('/addfish', addfish);
 app.use('/addlocation', addlocation);
-app.use('/addrecord', addrecord);
+app.use('/admin/addrecord', addrecord);
 app.use('/addfishlog', addfishlog);
 app.use('/addbait', addbait);
 app.use('/updatefish', updatefish);
@@ -73,7 +73,7 @@ app.use('/updatebait', updatebait);
 app.use('/insert_message', insert_message);
 app.use('/insert_error', insert_error);
 app.use('/deleterecord', deleterecord);
-app.use('/deletetable', deletetable);
+app.use('/admin/deletetable', deletetable);
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));

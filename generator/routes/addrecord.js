@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var db = require('./../controllers/db.js');
 
 router.get('/', function(req, res, next){
-  res.render('addrecord');
+  res.render('admin/addrecord');
 });
 
 router.post('/', function(req, res){
