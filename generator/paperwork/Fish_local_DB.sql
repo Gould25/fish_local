@@ -129,7 +129,6 @@ INSERT INTO location(lat,lng,b_o_w,state,county)
  VALUES (37.837075,-93.262909,"Pomme de Terre","MO","Hickory"),
         (38.201491,-92.623494,"Osage River","MO","Miller"),
         (38.116625,-92.663908,"Lake of the Ozarks","MO","Miller"),
-        (37.689125,-92.632192,"Clayton Pond","MO","Laclede"),
         (37.535240,-92.371943,"Gasconade River","MO","Laclede"),
         (37.731700,-92.858162,"Bennet Spring","MO","Dallas"),
         (37.797050,-93.374136,"Pomme de Terre","MO","Hickory"),
