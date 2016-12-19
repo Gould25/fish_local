@@ -6,7 +6,7 @@ var db = require('./../controllers/db.js');
 // read table
 var fish = {};
 router.get('/', function(req, res){
-  db.query('SELECT * FROM organic',function(err,rows){
+  db.query('select bait.baitName, bait.description from bait, organic where bait.baitName = organic.baitName',function(err,rows){
     if(err){
       throw err;
     } else {
