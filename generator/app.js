@@ -2,7 +2,7 @@ var express = require('express');
 var engine = require('ejs-locals');
 var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
-//var favicon = require('static-favicon');
+var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -41,7 +41,7 @@ app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//app.use(favicon());
+app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
